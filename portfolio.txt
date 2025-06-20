@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personal Portfolio</title>
+  <style>
+    /* Modern Web Design Standards applied: typography, spacing, color */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+    :root {
+      --primary-color: #5a4de0;
+      --secondary-color: #06b6d4;
+      --background-color: #121217;
+      --card-background: rgba(255 255 255 / 0.05);
+      --text-color-light: #d1d5db;
+      --text-color-dark: #f9fafb;
+      --border-radius: 12px;
+      --spacing-unit: 16px;
+      --max-content-width: 900px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--background-color);
+      color: var(--text-color-light);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--spacing-unit);
+    }
+
+    a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover,
+    a:focus {
+      color: var(--primary-color);
+      outline: none;
+    }
+
+    header {
+      width: 100%;
+      max-width: var(--max-content-width);
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(209 213 219 / 0.1);
+      margin-bottom: 48px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 2.75rem;
+      margin-bottom: 8px;
+      color: var(--text-color-dark);
+    }
+
+    header p {
+      font-size: 1.125rem;
+      color: var(--text-color-light);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    main {
+      width: 100%;
+      max-width: var(--max-content-width);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    section.card {
+      background: var(--card-background);
+      padding: 32px;
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 15px rgba(0 0 0 / 0.3);
+      border: 1px solid rgba(255 255 255 / 0.1);
+    }
+
+    section.card h2 {
+      color: var(--text-color-dark);
+      font-weight: 700;
+      margin-bottom: 24px;
+      font-size: 1.75rem;
+      border-bottom: 2px solid var(--secondary-color);
+      padding-bottom: 8px;
+      max-width: max-content;
+    }
+
+    /* Skills list */
+    ul.skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul.skills-list li {
+      background: var(--primary-color);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      user-select: none;
+      box-shadow: 0 3px 6px rgba(90, 77, 224, 0.4);
+      transition: background-color 0.3s ease;
+    }
+
+    ul.skills-list li:hover,
+    ul.skills-list li:focus {
+      background-color: var(--secondary-color);
+      outline: none;
+      cursor: default;
+    }
+
+    /* Projects */
+    .projects-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    @media (max-width: 700px) {
+      .projects-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .project {
+      background: transparent;
+      border: 1px solid rgba(255 255 255 / 0.15);
+      border-radius: var(--border-radius);
+      padding: 20px;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project:hover,
+    .project:focus-within {
+      box-shadow: 0 10px 30px rgba(90, 77, 224, 0.6);
+      border-color: var(--secondary-color);
+      outline: none;
+    }
+
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-color-dark);
+    }
+
+    .project-description {
+      color: var(--text-color-light);
+      flex-grow: 1;
+      margin-bottom: 16px;
+    }
+
+    .project-link {
+      align-self: flex-start;
+      color: var(--primary-color);
+      font-weight: 600;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 2px;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .project-link:hover,
+    .project-link:focus {
+      color: var(--secondary-color);
+      border-color: var(--secondary-color);
+      outline: none;
+    }
+
+    /* Experience list */
+    .experience-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .experience-list li {
+      margin-bottom: 24px;
+      border-left: 3px solid var(--primary-color);
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .experience-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .experience-role {
+      font-weight: 700;
+      color: var(--text-color-dark);
+      margin-bottom: 4px;
+    }
+
+    .experience-company {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 6px;
+    }
+
+    .experience-duration {
+      color: var(--text-color-light);
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+
+    .experience-description {
+      color: var(--text-color-light);
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      max-width: var(--max-content-width);
+      text-align: center;
+      margin-top: 64px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(209 213 219 / 0.1);
+      color: rgba(209 213 219 / 0.5);
+      font-size: 0.9rem;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MANIKALA VIJAY KRISHNA</h1>
+    <p>Full-Stack Developer | Designer | Tech Enthusiast</p>
+  </header>
+
+  <main>
+    <section class="card" id="skills">
+      <h2>Skills</h2>
+      <ul class="skills-list" aria-label="List of skills">
+        <li tabindex="0">JavaScript</li>
+        <li tabindex="0">TypeScript</li>
+        <li tabindex="0">React</li>
+        <li tabindex="0">Node.js</li>
+        <li tabindex="0">CSS3</li>
+        <li tabindex="0">HTML5</li>
+        <li tabindex="0">Git</li>
+        <li tabindex="0">Docker</li>
+        <li tabindex="0">GraphQL</li>
+      </ul>
+    </section>
+
+    <section class="card" id="projects">
+      <h2>Projects</h2>
+      <div class="projects-list">
+        <article class="project" tabindex="0" aria-labelledby="project1-title" aria-describedby="project1-desc">
+          <h3 class="project-title" id="project1-title">Portfolio Website</h3>
+          <p class="project-description" id="project1-desc">A personal portfolio website built with React and styled-components to showcase projects and skills with a modern design.</p>
+          <a href="https://github.com/johndoe/portfolio" class="project-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </article>
+
+        <article class="project" tabindex="0" aria-labelledby="project2-title" aria-describedby="project2-desc">
+          <h3 class="project-title" id="project2-title">Task Manager App</h3>
+          <p class="project-description" id="project2-desc">A full-featured task manager with user authentication, real-time updates, and responsive design built using MERN stack.</p>
+          <a href="https://github.com/johndoe/task-manager" class="project-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </article>
+
+        <article class="project" tabindex="0" aria-labelledby="project3-title" aria-describedby="project3-desc">
+          <h3 class="project-title" id="project3-title">Weather Dashboard</h3>
+          <p class="project-description" id="project3-desc">Responsive weather dashboard that fetches live weather data and presents it with interactive charts and maps.</p>
+          <a href="https://github.com/johndoe/weather-dashboard" class="project-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </article>
+
+        <article class="project" tabindex="0" aria-labelledby="project4-title" aria-describedby="project4-desc">
+          <h3 class="project-title" id="project4-title">E-commerce Storefront</h3>
+          <p class="project-description" id="project4-desc">A modern e-commerce storefront with product browsing, cart functionality, and smooth checkout experience.</p>
+          <a href="https://github.com/johndoe/ecommerce-store" class="project-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="card" id="experience">
+      <h2>Experience</h2>
+      <ul class="experience-list">
+        <li tabindex="0" aria-label="Senior Developer at Tech Solutions from 2022 to Present">
+          <div class="fresher ">Senior Developer</div>
+          <div class="experience-company">Tech Solutions</div>
+          <div class="experience-duration">2022 - Present</div>
+          <div class="experience-description">
+            Leading a team developing scalable web applications with a focus on performance and accessibility. Driving adoption of modern development patterns.
+          </div>
+        </li>
+        <li tabindex="0" aria-label="Frontend Developer at WebCrafters from 2023 to 2024">
+          <div class="experience-role">Frontend & backend Developer</div>
+          <div class="experience-company">WebCrafters</div>
+          <div class="experience-duration">2022 - 2024</div>
+          <div class="experience-description">
+            Built responsive, user-friendly websites and interactive components using React and TypeScript. Collaborated closely with UI/UX designers and backend teams.
+          </div>
+        </li>
+        <li tabindex="0" aria-label="Intern at Creative Labs from 2022 to 2025">
+          <div class="experience-role">Intern</div>
+          <div class="experience-company">Creative Labs</div>
+          <div class="experience-duration">2024 - 2025</div>
+          <div class="experience-description">
+            Assisted in developing frontend features and fixing bugs. Gained practical experience working in an agile software team.
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2024 John Doe — All rights reserved
+  </footer>
+</body>
+</html>
